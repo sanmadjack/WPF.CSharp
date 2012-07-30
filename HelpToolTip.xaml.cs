@@ -16,7 +16,7 @@ namespace SMJ.WPF {
     /// Interaction logic for HelpToolTip.xaml
     /// </summary>
     public partial class HelpToolTip : UserControl {
-        public object ToolTip {
+        public new object ToolTip {
             get {
                 return image.ToolTip;
             }
