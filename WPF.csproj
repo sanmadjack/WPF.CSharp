@@ -255,6 +255,9 @@
     <Resource Include="Images\16px\system-user.png" />
     <Resource Include="Images\16px\system-users.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\face-monkey.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
