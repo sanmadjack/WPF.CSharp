@@ -52,6 +52,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomWindowBorder.cs" />
     <Compile Include="Effects\AEffect.cs" />
     <Compile Include="Effects\FadeEffect.cs" />
     <Compile Include="Effects\FadeInEffect.cs" />
