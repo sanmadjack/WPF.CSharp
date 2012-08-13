@@ -24,12 +24,16 @@ namespace SMJ.WPF {
             this.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
             this.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
             this.Visibility = System.Windows.Visibility.Visible;
-            _btmItems.HorizontalAlignment = System.Windows.HorizontalAlignment.Right;
+            Shadow.Fill = new SolidColorBrush(Colors.Black);
+            Shadow.RadiusX = 5;
+            Shadow.RadiusY = 5;
+            Shadow.Margin = new Thickness(5,5,-5,-5);
         }
         Rectangle Background = new Rectangle();
         Rectangle WhitePart = new Rectangle();
         Grid Maincontent = new Grid();
 
+        public Rectangle Shadow = new Rectangle();
 
         public UIElementCollection BorderContent {
             get {
@@ -65,6 +69,10 @@ namespace SMJ.WPF {
                 hwndSource = System.Windows.PresentationSource.FromVisual(parentWindow) as System.Windows.Interop.HwndSource;
                 parentWindow.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(superGrid_MouseLeftButtonDown);
             }
+            Grid.SetColumn(Shadow, 0);
+            Grid.SetRow(Shadow, 0);
+            Grid.SetColumnSpan(Shadow, 3);
+            Grid.SetRowSpan(Shadow, 3);
 
             Color black = Color.FromArgb(255, 0, 0, 0);
             Color semi = Color.FromArgb(200, 0, 0, 0);
@@ -88,8 +96,12 @@ namespace SMJ.WPF {
 
 
             Grid superGrid = new Grid();
+
+//            superGrid.Children.Add(Shadow);
+
             superGrid.ClipToBounds = true;
             superGrid.Children.Add(Background);
+
 
             Grid.SetColumn(WhitePart, 1);
             Grid.SetRow(WhitePart, 1);

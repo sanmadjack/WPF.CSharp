@@ -1,0 +1,34 @@
+﻿<UserControl x:Class="SMJ.WPF.SuperProgressBar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="55" d:DesignWidth="514" Background="Transparent">
+    <UserControl.Resources>
+        <SolidColorBrush Color="#204a87" x:Name="ProgressColor" x:Key="ProgressColor" />
+        <Style x:Key="ProgressBarStyle" TargetType="ProgressBar">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ProgressBar">
+                        <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                            <Rectangle HorizontalAlignment="Stretch" VerticalAlignment="Stretch" RadiusX="5" RadiusY="5" Fill="#2e3436" Opacity="0.25">
+                            </Rectangle>
+                            <Grid x:Name="PART_Track" Margin="2" >
+                                <Rectangle x:Name="PART_Indicator" HorizontalAlignment="Left" RadiusX="5" RadiusY="5" Fill="{DynamicResource ProgressColor}">
+                                </Rectangle>
+                            </Grid>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </UserControl.Resources>
+    <Grid>
+        
+        <ProgressBar Name="progress" Value="50" Style="{StaticResource ProgressBarStyle}"/>
+        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="statusBG" FontSize="20" Foreground="Black" />
+        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="status" FontSize="20" Foreground="White"  />
+    </Grid>
+</UserControl>
