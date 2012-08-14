@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Effects;
 using System.Windows.Shapes;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
@@ -57,6 +58,7 @@ namespace SMJ.WPF {
                 }
             }
         }
+        DropShadowEffect shadow = new DropShadowEffect();
         protected override void OnInitialized(EventArgs e) {
             base.OnInitialized(e);
             parentWindow = Window.GetWindow(this);
@@ -69,6 +71,14 @@ namespace SMJ.WPF {
                 hwndSource = System.Windows.PresentationSource.FromVisual(parentWindow) as System.Windows.Interop.HwndSource;
                 parentWindow.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(superGrid_MouseLeftButtonDown);
             }
+            shadow.Direction = 320;
+            shadow.Color = Colors.Black;
+            shadow.ShadowDepth = 10;
+            shadow.Opacity = 0.5;
+            shadow.BlurRadius = 9;
+
+//            Background.Effect = shadow;
+  //          Background.Margin =                new Thickness(0, 0, 10, 10);
             Grid.SetColumn(Shadow, 0);
             Grid.SetRow(Shadow, 0);
             Grid.SetColumnSpan(Shadow, 3);
@@ -124,6 +134,10 @@ namespace SMJ.WPF {
             column.Width = new GridLength(1);
             superGrid.ColumnDefinitions.Add(column);
 
+//            column = new ColumnDefinition();
+ //           column.Width = new GridLength(10, GridUnitType.Pixel);
+  //          superGrid.ColumnDefinitions.Add(column);
+
             RowDefinition row;
 
             row = new RowDefinition();
@@ -140,6 +154,10 @@ namespace SMJ.WPF {
             row.MinHeight = 5;
             superGrid.RowDefinitions.Add(row);
 
+//            row = new RowDefinition();
+  //          row.Height = new GridLength(10, GridUnitType.Pixel);
+    //        row.MinHeight = 5;
+      //      superGrid.RowDefinitions.Add(row);
 
             Queue<Cursor> cursors = new Queue<Cursor>();
             cursors.Enqueue(Cursors.SizeNWSE);
@@ -170,9 +188,9 @@ namespace SMJ.WPF {
             }
 
             Grid.SetColumn(Background, 0);
-            Grid.SetColumnSpan(Background, 3);
+            Grid.SetColumnSpan(Background, 4);
             Grid.SetRow(Background, 0);
-            Grid.SetRowSpan(Background, 6);
+            Grid.SetRowSpan(Background, 7);
 
             Grid.SetRow(_btmItems, 2);
             Grid.SetColumn(_btmItems, 1);
