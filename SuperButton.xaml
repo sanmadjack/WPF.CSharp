@@ -6,11 +6,43 @@
                 xmlns:w="clr-namespace:SMJ.WPF"
              mc:Ignorable="d" 
              d:DesignHeight="54" d:DesignWidth="143">
+ <!--  <UserControl.Resources>
+        <LinearGradientBrush x:Key="background" StartPoint="0.5,1" EndPoint="0.5,0">
+            <GradientStopCollection>
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="WhiteSmoke" Offset="0.5"/>
+                <GradientStop Color="White" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="hover" StartPoint="0.5,1" EndPoint="0.5,0">
+            <GradientStopCollection>
+                <GradientStop Color="White" Offset="0"/>
+                <GradientStop Color="White" Offset="0.5"/>
+                <GradientStop Color="White" Offset="1"/>
+            </GradientStopCollection>
+        </LinearGradientBrush>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="{DynamicResource background}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource hover}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Background" Value="{DynamicResource background}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{DynamicResource hover}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>-->
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ComboBox Name="buttonOptions" SelectionChanged="buttonOptions_SelectionChanged" Width="20" HorizontalAlignment="Right"/>
+        <ComboBox Name="buttonOptions" SelectionChanged="buttonOptions_SelectionChanged" Width="20" HorizontalAlignment="Right" />
         <Button Name="button" Margin="0,0,0,0">
             <Button.Content>
                 <Grid>

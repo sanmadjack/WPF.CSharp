@@ -5,8 +5,14 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
              d:DesignHeight="55" d:DesignWidth="514" Background="Transparent">
-    <UserControl.Resources>
-        <SolidColorBrush Color="#204a87" x:Name="ProgressColor" x:Key="ProgressColor" />
+<!--    <UserControl.Resources>
+        <LinearGradientBrush x:Name="ProgressColor" x:Key="ProgressColor" StartPoint="0.5,0" EndPoint="0.5,1">
+            <GradientStopCollection>
+                <GradientStop Color="#204a87" Offset="0" />
+                <GradientStop Color="#204a87" Offset="0.5" />
+                <GradientStop Color="#204a87" Offset="1" />
+            </GradientStopCollection>
+        </LinearGradientBrush>
         <Style x:Key="ProgressBarStyle" TargetType="ProgressBar">
             <Setter Property="Template">
                 <Setter.Value>
@@ -24,11 +30,9 @@
             </Setter>
         </Style>
 
-    </UserControl.Resources>
-    <Grid>
-        
-        <ProgressBar Name="progress" Value="50" Style="{StaticResource ProgressBarStyle}"/>
-        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="statusBG" FontSize="20" Foreground="Black" />
-        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="status" FontSize="20" Foreground="White"  />
+    </UserControl.Resources>-->
+    <Grid>        
+        <ProgressBar Name="progress" Value="50" />
+        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="status" FontSize="20" Foreground="Black"  />
     </Grid>
 </UserControl>

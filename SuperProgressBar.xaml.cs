@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Media.Effects;
+using System.Windows.Media.Animation;
 namespace SMJ.WPF {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
@@ -25,7 +26,8 @@ namespace SMJ.WPF {
             InitializeComponent();
             BlurEffect blur = new BlurEffect();
             blur.Radius = 5;
-            statusBG.Effect = blur;
+            //statusBG.Effect = blur;
+            NormalBrush = progress.Foreground;
         }
 
         public double Value {
@@ -43,9 +45,24 @@ namespace SMJ.WPF {
             }
             set {
                 status.Content = value;
-                statusBG.Content = value;
+                //statusBG.Content = value;
             }
         }
+        public bool StatusVisible {
+            get {
+                return status.IsVisible;
+            }
+            set {
+                if (value) {
+                    status.Visibility = System.Windows.Visibility.Visible;
+                    //statusBG.Visibility = System.Windows.Visibility.Visible;
+                } else {
+                    status.Visibility = System.Windows.Visibility.Collapsed;
+                   // statusBG.Visibility = System.Windows.Visibility.Collapsed;
+                }
+            }
+        }
+
 
         public double Max {
             get {
@@ -61,6 +78,7 @@ namespace SMJ.WPF {
             }
             set {
                 progress.IsIndeterminate = value;
+                State = State;
             }
         }
 
@@ -68,9 +86,10 @@ namespace SMJ.WPF {
 
         private SuperProgressBarState _state = SuperProgressBarState.Normal;
 
-        private Color ErrorColor = Color.FromRgb(0xEF, 0x29, 0x29);
-        private Color WaitColor = Color.FromRgb(0xFC, 0xE9, 0x4F);
-        private Color NormalColor = Color.FromRgb(0x20, 0x4A, 0x87);
+
+        private static Brush NormalBrush;
+        private static Brush ErrorBrush = new SolidColorBrush(Colors.Red);
+        private static Brush WaitBrush = new SolidColorBrush(Colors.Yellow);
 
         public SuperProgressBarState State {
             get {
@@ -78,19 +97,22 @@ namespace SMJ.WPF {
             }
             set {
                 _state = value;
+                Brush to_use;
                 switch(value) {
                     case SuperProgressBarState.Wait:
-                        Resources["ProgressColor"] = new SolidColorBrush(WaitColor);
+                        to_use = WaitBrush;
                         break;
                     case SuperProgressBarState.Normal:
-                        Resources["ProgressColor"] = new SolidColorBrush(NormalColor);
+                        to_use = NormalBrush;
                         break;
                     case SuperProgressBarState.Error:
-                        Resources["ProgressColor"] = new SolidColorBrush(ErrorColor);
+                        to_use = ErrorBrush;
                         break;
                     default:
                         throw new NotSupportedException(value.ToString());
                 }
+                progress.Foreground = to_use;
+
             }
         }
 
