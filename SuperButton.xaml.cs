@@ -19,7 +19,7 @@ namespace SMJ.WPF {
     /// </summary>
     public partial class SuperButton : UserControl {
 
-        private ObservableCollection<object> options = new ObservableCollection<object>();
+//        private ObservableCollection<object> options = new ObservableCollection<object>();
         private Dictionary<object,EventHandler> events = new Dictionary<object,EventHandler>();
 
         public SuperButton() {
@@ -69,11 +69,15 @@ namespace SMJ.WPF {
                 return label;
             }
         }
-
+        List<object> options = new List<object>();
         public void clearOptions() {
-            options.Clear();
+            buttonOptions.SelectedIndex = -1;
             events.Clear();
+            options.Clear();
+
             button.Margin = new Thickness(0, 0, 0, 0);
+            buttonOptions.Items.Refresh();
+           // buttonOptions.UpdateLayout();
         }
 
         public void addOption(object name, EventHandler click_event) {
@@ -102,6 +106,10 @@ namespace SMJ.WPF {
         public event RoutedEventHandler Click {
             add { button.Click += value; }
             remove { button.Click -= value; }
+        }
+
+        private void buttonOptions_SourceUpdated(object sender, DataTransferEventArgs e) {
+
         }
 
 

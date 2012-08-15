@@ -42,7 +42,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <ComboBox Name="buttonOptions" SelectionChanged="buttonOptions_SelectionChanged" Width="20" HorizontalAlignment="Right" />
+        <ComboBox Name="buttonOptions" SelectionChanged="buttonOptions_SelectionChanged" SourceUpdated="buttonOptions_SourceUpdated" Width="20" HorizontalAlignment="Right" />
         <Button Name="button" Margin="0,0,0,0">
             <Button.Content>
                 <Grid>
