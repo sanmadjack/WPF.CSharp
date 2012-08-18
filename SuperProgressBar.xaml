@@ -33,6 +33,6 @@
     </UserControl.Resources>-->
     <Grid>        
         <ProgressBar Name="progress" Value="50" />
-        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="status" FontSize="20" Foreground="Black"  />
+        <Label Content="YAY!" VerticalAlignment="Center" HorizontalAlignment="Center" Name="status" FontSize="18" Foreground="Black"  />
     </Grid>
 </UserControl>
