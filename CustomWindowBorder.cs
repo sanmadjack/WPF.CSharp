@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows.Controls;
+using System.Runtime.InteropServices;
 using System.Windows;
-using System.Windows.Controls.Primitives;
+using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Effects;
 using System.Windows.Shapes;
-using System.Runtime.InteropServices;
-using System.Windows.Interop;
 namespace SMJ.WPF {
     enum Horiz {
-        Left, Middle, Right
+        Left,
+        Middle,
+        Right
     }
     enum Vert {
-        Top, Middle, Bottom
+        Top,
+        Middle,
+        Bottom
     }
 
     public class CustomWindowBorder : UserControl {
@@ -28,9 +29,9 @@ namespace SMJ.WPF {
             Shadow.Fill = new SolidColorBrush(Colors.Black);
             Shadow.RadiusX = 5;
             Shadow.RadiusY = 5;
-            Shadow.Margin = new Thickness(5,5,-5,-5);
+            Shadow.Margin = new Thickness(5, 5, -5, -5);
         }
-        Rectangle Background = new Rectangle();
+        Rectangle BackgroundRectangle = new Rectangle();
         Rectangle WhitePart = new Rectangle();
         Grid Maincontent = new Grid();
 
@@ -66,7 +67,7 @@ namespace SMJ.WPF {
                 parentWindow.WindowStyle = WindowStyle.None;
                 parentWindow.AllowsTransparency = true;
                 parentWindow.Background = new SolidColorBrush(Colors.Transparent);
-                if(parentWindow.ResizeMode== ResizeMode.CanResize)
+                if (parentWindow.ResizeMode == ResizeMode.CanResize)
                     parentWindow.ResizeMode = ResizeMode.CanResizeWithGrip;
                 hwndSource = System.Windows.PresentationSource.FromVisual(parentWindow) as System.Windows.Interop.HwndSource;
                 parentWindow.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(superGrid_MouseLeftButtonDown);
@@ -77,8 +78,8 @@ namespace SMJ.WPF {
             shadow.Opacity = 0.5;
             shadow.BlurRadius = 9;
 
-//            Background.Effect = shadow;
-  //          Background.Margin =                new Thickness(0, 0, 10, 10);
+            //            Background.Effect = shadow;
+            //          Background.Margin =                new Thickness(0, 0, 10, 10);
             Grid.SetColumn(Shadow, 0);
             Grid.SetRow(Shadow, 0);
             Grid.SetColumnSpan(Shadow, 3);
@@ -90,9 +91,9 @@ namespace SMJ.WPF {
             stops.Add(new GradientStop(semi, 0));
             stops.Add(new GradientStop(black, 0.5));
             stops.Add(new GradientStop(semi, 1));
-            Background.Fill = new LinearGradientBrush(stops, 90.0);
-            Background.RadiusX = 3;
-            Background.RadiusY = 3;
+            BackgroundRectangle.Fill = new LinearGradientBrush(stops, 90.0);
+            BackgroundRectangle.RadiusX = 3;
+            BackgroundRectangle.RadiusY = 3;
 
 
             stops = new GradientStopCollection();
@@ -107,10 +108,10 @@ namespace SMJ.WPF {
 
             Grid superGrid = new Grid();
 
-//            superGrid.Children.Add(Shadow);
+            //            superGrid.Children.Add(Shadow);
 
             superGrid.ClipToBounds = true;
-            superGrid.Children.Add(Background);
+            superGrid.Children.Add(BackgroundRectangle);
 
 
             Grid.SetColumn(WhitePart, 1);
@@ -134,9 +135,9 @@ namespace SMJ.WPF {
             column.Width = new GridLength(1);
             superGrid.ColumnDefinitions.Add(column);
 
-//            column = new ColumnDefinition();
- //           column.Width = new GridLength(10, GridUnitType.Pixel);
-  //          superGrid.ColumnDefinitions.Add(column);
+            //            column = new ColumnDefinition();
+            //           column.Width = new GridLength(10, GridUnitType.Pixel);
+            //          superGrid.ColumnDefinitions.Add(column);
 
             RowDefinition row;
 
@@ -154,10 +155,10 @@ namespace SMJ.WPF {
             row.MinHeight = 5;
             superGrid.RowDefinitions.Add(row);
 
-//            row = new RowDefinition();
-  //          row.Height = new GridLength(10, GridUnitType.Pixel);
-    //        row.MinHeight = 5;
-      //      superGrid.RowDefinitions.Add(row);
+            //            row = new RowDefinition();
+            //          row.Height = new GridLength(10, GridUnitType.Pixel);
+            //        row.MinHeight = 5;
+            //      superGrid.RowDefinitions.Add(row);
 
             Queue<Cursor> cursors = new Queue<Cursor>();
             cursors.Enqueue(Cursors.SizeNWSE);
@@ -187,16 +188,16 @@ namespace SMJ.WPF {
                 }
             }
 
-            Grid.SetColumn(Background, 0);
-            Grid.SetColumnSpan(Background, 4);
-            Grid.SetRow(Background, 0);
-            Grid.SetRowSpan(Background, 7);
+            Grid.SetColumn(BackgroundRectangle, 0);
+            Grid.SetColumnSpan(BackgroundRectangle, 4);
+            Grid.SetRow(BackgroundRectangle, 0);
+            Grid.SetRowSpan(BackgroundRectangle, 7);
 
             Grid.SetRow(_btmItems, 2);
             Grid.SetColumn(_btmItems, 1);
             superGrid.Children.Add(_btmItems);
 
-            if(parentWindow!=null&&parentWindow.ResizeMode == ResizeMode.CanResizeWithGrip)
+            if (parentWindow != null && parentWindow.ResizeMode == ResizeMode.CanResizeWithGrip)
                 _btmItems.Margin = new Thickness(0, 0, 15, 0);
 
             Grid.SetColumn(Maincontent, 1);
@@ -232,7 +233,7 @@ namespace SMJ.WPF {
             if (num == 0)
                 return;
 
-//            ResizeWindow((ResizeDirection)num);
+            //            ResizeWindow((ResizeDirection)num);
         }
 
         private void InitializeWindowSource(object sender, EventArgs e) {

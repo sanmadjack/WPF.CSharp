@@ -1,25 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Media.Effects;
-using System.Windows.Media.Animation;
 namespace SMJ.WPF {
     /// <summary>
     /// Interaction logic for UserControl1.xaml
     /// </summary>
     /// 
     public enum SuperProgressBarState {
-        Error, Wait, Normal
+        Error,
+        Wait,
+        Normal
     }
     public partial class SuperProgressBar : UserControl {
         public SuperProgressBar() {
@@ -58,7 +49,7 @@ namespace SMJ.WPF {
                     //statusBG.Visibility = System.Windows.Visibility.Visible;
                 } else {
                     status.Visibility = System.Windows.Visibility.Collapsed;
-                   // statusBG.Visibility = System.Windows.Visibility.Collapsed;
+                    // statusBG.Visibility = System.Windows.Visibility.Collapsed;
                 }
             }
         }
@@ -98,7 +89,7 @@ namespace SMJ.WPF {
             set {
                 _state = value;
                 Brush to_use;
-                switch(value) {
+                switch (value) {
                     case SuperProgressBarState.Wait:
                         to_use = WaitBrush;
                         break;

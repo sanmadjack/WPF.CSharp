@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Collections.ObjectModel;
 namespace SMJ.WPF {
     /// <summary>
     /// Interaction logic for SuperButton.xaml
@@ -20,7 +12,7 @@ namespace SMJ.WPF {
     public partial class SuperButton : UserControl {
 
         private ObservableCollection<object> options = new ObservableCollection<object>();
-        private Dictionary<object,EventHandler> events = new Dictionary<object,EventHandler>();
+        private Dictionary<object, EventHandler> events = new Dictionary<object, EventHandler>();
 
         public SuperButton() {
             InitializeComponent();
@@ -74,7 +66,7 @@ namespace SMJ.WPF {
             options.Clear();
 
             button.Margin = new Thickness(0, 0, 0, 0);
-           // buttonOptions.UpdateLayout();
+            // buttonOptions.UpdateLayout();
         }
 
         public void addOption(object name, EventHandler click_event) {
